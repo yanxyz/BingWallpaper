@@ -1,0 +1,69 @@
+﻿<Window x:Class="BingWallpaper.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BingWallpaper"
+        mc:Ignorable="d"
+        Title="Settings" 
+        Height="300" Width="525" 
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="ToolWindow">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="0,0,5,10"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="MaxLines" Value="1"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+        <Style x:Key="OpenDialogButtonStyle" TargetType="Button">
+            <Setter Property="Padding" Value="5,0"/>
+            <Setter Property="Margin" Value="3,0,0,10"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label>收藏到</Label>
+        <TextBox Name="tbSave" Grid.Column="1"/>
+        <Button Name="btnOpen" Grid.Column="2" Style="{StaticResource OpenDialogButtonStyle}"
+                Click="Open_Click">…</Button>
+
+        <Label Grid.Row="1">计划任务</Label>
+        <WrapPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
+            <WrapPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Padding" Value="0,5"/>
+                    <Setter Property="MinWidth" Value="60"/>
+                    <Setter Property="Margin" Value="0,0,10,0"/>
+                </Style>
+            </WrapPanel.Resources>
+            <Button Click="TSCreate_Click">创建</Button>
+            <Button Click="TSOpen_Click">修改</Button>
+            <Button Click="TSDelete_Click">删除</Button>
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Right" Margin="0,15,0,0">
+            <WrapPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Padding" Value="0,5"/>
+                    <Setter Property="Width" Value="60"/>
+                </Style>
+            </WrapPanel.Resources>
+            <Button IsDefault="True" Name="btnOk" Click="btnOk_Click" Margin="0,0,10,0">_Ok</Button>
+            <Button IsCancel="True">_Cancel</Button>
+        </WrapPanel>
+    </Grid>
+</Window>
